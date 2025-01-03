@@ -1,0 +1,21 @@
+# 因子旋转
+#3 用正交旋转提取因子
+fa.varimax<-fa(correlations,nfactors=2,rotate=”varimax”,fm=”pa”)
+fa.varimax
+## 用斜交旋转提取因子
+fa,promax<-fa(correlations,nfactors=2,rotate=”promax”,fm=”pa”)
+fa.promax
+## 因子结构矩阵（或称因子载荷阵）
+fsm<-function(oblique){
+if (class (oblique)[2]==”fa” & is.null(oblique$Phi)){
+waring(“Object doesn’t look like oblique EFA”)
+} else {
+P<-unclass(oblique$loading)
+F<-P %*% oblique$Phi
+colnames(F)<-c(“PA1”,”PA2”)
+return(F)
+}
+}
+### 对上面的例子使用该函数
+fsm(fa.promax)
+## 绘制正交结果或者斜交结果的图形：
