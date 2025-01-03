@@ -1,0 +1,7 @@
+# 判断需要提取的公因子数
+library(psych)
+covariances<-ability.cov$cov
+corrleations<-cov2cor(covariances)
+fa.parallel(correlations,n.obs=112,fa=”both”,n.iter=100,main=”Scree plots with parallel analysis”)
+abline(h=c(0,1))
+# fa=”both”表示因子图形将会同时展示主成分分析和公共因子分析的结果。
