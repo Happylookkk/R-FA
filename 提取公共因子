@@ -1,0 +1,4 @@
+# 提取公共因子
+## 未旋转的主轴迭代法提取因子
+fa<-fa(correlations,nfactors=2,rotate=”none”,fm=”pa”)
+fa
